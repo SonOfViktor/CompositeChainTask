@@ -9,8 +9,10 @@ public class Letter implements TextComponent {
         this.letter = letter;
     }
 
+    //todo equals hashcode
+
     @Override
-    public String operation() {
+    public String toString() {
         return Character.toString(letter);
     }
 }

@@ -9,8 +9,10 @@ public class Punctuation implements TextComponent {
         this.punctuation = letter;
     }
 
+    // todo equals hashcode
+
     @Override
-    public String operation() {
+    public String toString() {
         return Character.toString(punctuation);
     }
 }

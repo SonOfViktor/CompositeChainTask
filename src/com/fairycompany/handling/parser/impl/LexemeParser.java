@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LexemeParser implements TextParser {
-    private static final String LEXEME_REGEX = "(.+?)([,\\.+!?]|(\\.{3}))?$";
+    private static final String LEXEME_REGEX = "(.+?)([,\\.!?]|(\\.{3}))?$";
     private TextParser wordParser = new WordParser();
 
     @Override

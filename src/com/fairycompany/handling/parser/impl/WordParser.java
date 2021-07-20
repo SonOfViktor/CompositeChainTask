@@ -21,7 +21,9 @@ public class WordParser implements TextParser {
         Matcher matcher = pattern.matcher(word);
 
         while (matcher.find()) {
-            // todo make Creator and carry out regexes
+
+            // todo Creator and carry out regexes
+
             String symbol = matcher.group();
             if (symbol.matches("[\\p{Alpha}А-Яа-я]")) {
                 wordComposite.add(new Letter(symbol.charAt(0)));

@@ -22,11 +22,15 @@ public class TextComposite implements TextComponent {
         components.remove(component);
     }
 
+    // todo getType
+
+    // todo equals hashcode
+
     @Override
-    public String operation() {
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         for (TextComponent element : components) {
-            stringBuilder.append(element.operation());
+            stringBuilder.append(element.toString());           //todo add CompositeType
         }
 
         return stringBuilder.toString();

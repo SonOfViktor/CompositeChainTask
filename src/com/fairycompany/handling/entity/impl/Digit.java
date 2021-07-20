@@ -9,8 +9,10 @@ public class Digit implements TextComponent {
         this.digit = letter;
     }
 
+    //todo equals hashcode
+
     @Override
-    public String operation() {
+    public String toString() {
         return Character.toString(digit);
     }
 }
