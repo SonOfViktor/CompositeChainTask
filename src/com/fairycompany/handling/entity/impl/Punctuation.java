@@ -1,18 +1,12 @@
 package com.fairycompany.handling.entity.impl;
 
+import com.fairycompany.handling.entity.Symbol;
 import com.fairycompany.handling.entity.TextComponent;
 
-public class Punctuation implements TextComponent {
-    private char punctuation;
+public class Punctuation extends Symbol implements TextComponent {
 
     public Punctuation(char letter) {
-        this.punctuation = letter;
+        super(letter);
     }
 
-    // todo equals hashcode
-
-    @Override
-    public String toString() {
-        return Character.toString(punctuation);
-    }
 }

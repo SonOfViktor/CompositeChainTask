@@ -1,18 +1,12 @@
 package com.fairycompany.handling.entity.impl;
 
+import com.fairycompany.handling.entity.Symbol;
 import com.fairycompany.handling.entity.TextComponent;
 
-public class Digit implements TextComponent {
-    private char digit;
+public class Digit extends Symbol implements TextComponent {
 
     public Digit(char letter) {
-        this.digit = letter;
+        super(letter);
     }
 
-    //todo equals hashcode
-
-    @Override
-    public String toString() {
-        return Character.toString(digit);
-    }
 }

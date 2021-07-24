@@ -1,19 +1,32 @@
 package com.fairycompany.handling.entity;
 
 public enum CompositeType {
-    DOCUMENT("\n\r\t"),
-    PARAGRAPH(" "),
-    SENTENCE(" "),
-    LEXEME(""),
-    WORD("");
+    PARAGRAPH("\t", "\b\n\r"),
+    SENTENCE(),
+    LEXEME(" "),
+    WORD(""),
+    SYMBOL();
 
-    private final String delimiter;
+    private String prefix = "";
+    private String postfix = "";
 
-    CompositeType(String delimiter) {
-        this.delimiter = delimiter;
+    CompositeType() {
     }
 
-    public String getDelimiter() {
-        return delimiter;
+    CompositeType(String postfix) {
+        this.postfix = postfix;
+    }
+
+    CompositeType(String prefix, String postfix) {
+        this.prefix = prefix;
+        this.postfix = postfix;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public String getPostfix() {
+        return postfix;
     }
 }

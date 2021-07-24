@@ -4,6 +4,7 @@ import com.fairycompany.handling.entity.CompositeType;
 import com.fairycompany.handling.entity.TextComponent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TextComposite implements TextComponent {
@@ -14,6 +15,10 @@ public class TextComposite implements TextComponent {
         this.type = type;
     }
 
+    public List<TextComponent> getComponents() {
+        return new ArrayList<>(components);
+    }
+
     public void add(TextComponent component) {
         components.add(component);
     }
@@ -22,15 +27,38 @@ public class TextComposite implements TextComponent {
         components.remove(component);
     }
 
-    // todo getType
+    public int size() {
+        return components.size();
+    }
 
-    // todo equals hashcode
+    public CompositeType getType() {
+        return type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TextComposite composite)) return false;
+        if (components != null ? !components.equals(composite.components) : composite.components != null) return false;
+
+        return type == composite.type;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = components != null ? components.hashCode() : 0;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
+    }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+
         for (TextComponent element : components) {
-            stringBuilder.append(element.toString());           //todo add CompositeType
+            stringBuilder.append(type.getPrefix())
+                         .append(element.toString())
+                         .append(type.getPostfix());
         }
 
         return stringBuilder.toString();
