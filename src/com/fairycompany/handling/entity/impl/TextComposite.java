@@ -4,7 +4,6 @@ import com.fairycompany.handling.entity.CompositeType;
 import com.fairycompany.handling.entity.TextComponent;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class TextComposite implements TextComponent {
