@@ -109,7 +109,6 @@ public class TextCompositeServiceImpl implements TextCompositeService {
 
         long vowelAmount = symbols.stream()
                                     .filter(o -> o.toString().matches(VOWEL_REGEX))
-                                    .peek(System.out::println)
                                     .count();
 
         logger.log(Level.INFO, "There are {} vowels in this text", vowelAmount);
@@ -124,7 +123,6 @@ public class TextCompositeServiceImpl implements TextCompositeService {
 
         long consonantAmount = symbols.stream()
                                     .filter(o -> o.toString().matches(CONSONANT_REGEX))
-                                    .peek(System.out::println)
                                     .count();
 
         logger.log(Level.INFO, "There are {} vowels in this text", consonantAmount);

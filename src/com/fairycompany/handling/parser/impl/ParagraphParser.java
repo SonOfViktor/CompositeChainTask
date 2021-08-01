@@ -15,12 +15,16 @@ public class ParagraphParser implements TextParser {
 
     @Override
     public TextComponent parse(String paragraph) throws CompositeException {
+        if (paragraph == null || paragraph.isBlank()) {
+            throw new CompositeException("Given text is null or blank");
+        }
+
         TextComposite paragraphComposite = new TextComposite(CompositeType.SENTENCE);
         Pattern pattern = Pattern.compile(SENTENCE_REGEX, Pattern.DOTALL);
         Matcher matcher = pattern.matcher(paragraph);
 
         while (matcher.find()) {
-            String sentence = matcher.group().trim();
+            String sentence = matcher.group();
             TextComponent sentenceComposite = sentenceParser.parse(sentence);
             paragraphComposite.add(sentenceComposite);
         }

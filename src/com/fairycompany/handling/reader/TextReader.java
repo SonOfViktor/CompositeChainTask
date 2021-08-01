@@ -31,7 +31,7 @@ public class TextReader {
             logger.log(Level.INFO, "Read file {} is successful", dataFile.getFileName());
 
         } catch (IOException e) {
-            throw new CompositeException(String.format("Input error during reading file %s", dataFile.getFileName()), e);
+            throw new CompositeException("Input error during reading file " + dataFile.getFileName(), e);
         }
 
         return document;

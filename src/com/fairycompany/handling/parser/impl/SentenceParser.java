@@ -14,6 +14,10 @@ public class SentenceParser implements TextParser {
 
     @Override
     public TextComponent parse(String sentence) throws CompositeException {
+        if (sentence == null || sentence.isBlank()) {
+            throw new CompositeException("Given text is null or blank");
+        }
+
         String[] lexemes = sentence.trim().split(SENTENCE_DELIMITER_REGEX);
         TextComposite sentenceComposite = new TextComposite(CompositeType.LEXEME);
 

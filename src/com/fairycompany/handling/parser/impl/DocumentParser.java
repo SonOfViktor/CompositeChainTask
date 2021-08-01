@@ -12,6 +12,10 @@ public class DocumentParser implements TextParser {
 
     @Override
     public TextComponent parse(String document) throws CompositeException {
+        if (document == null || document.isBlank()) {
+            throw new CompositeException("Given text is null or blank");
+        }
+
         TextComposite documentComposite = new TextComposite(CompositeType.PARAGRAPH);
         String[] paragraphs = document.trim().split(DOCUMENT_DELIMITER_REGEX);
 

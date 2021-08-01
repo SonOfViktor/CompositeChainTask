@@ -11,12 +11,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LexemeParser implements TextParser {
-    private static final String LEXEME_REGEX = "(\\S+?)([,.!?]|(\\.{3}))?($|\\s)";
+    private static final String LEXEME_REGEX = "(\\S+?)([,;:.!?]|(\\.{3}))?($|\\s)";
     private static final String PUNCTUATION_REGEX = "\\p{Punct}";
     private TextParser wordParser = new WordParser();
 
     @Override
     public TextComponent parse(String lexeme) throws CompositeException {
+        if (lexeme == null || lexeme.isBlank()) {
+            throw new CompositeException("Given text is null or blank");
+        }
+
         TextComposite lexemeComposite = new TextComposite(CompositeType.WORD);
         Pattern pattern = Pattern.compile(LEXEME_REGEX);
         Matcher matcher = pattern.matcher(lexeme);
@@ -33,7 +37,9 @@ public class LexemeParser implements TextParser {
             }
 
             if (punctuation != null) {
-                lexemeComposite.add(new Punctuation(punctuation.charAt(0)));
+                for (int i = 0; i < punctuation.length(); i++) {
+                    lexemeComposite.add(new Punctuation(punctuation.charAt(i)));
+                }
             }
 
         }

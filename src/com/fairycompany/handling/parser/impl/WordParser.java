@@ -15,6 +15,10 @@ public class WordParser implements TextParser {
 
     @Override
     public TextComponent parse(String word) throws CompositeException {
+        if (word == null || word.isBlank()) {
+            throw new CompositeException("Given text is null or blank");
+        }
+
         SymbolCreator symbolCreator = new SymbolCreator();
         TextComposite wordComposite = new TextComposite(CompositeType.SYMBOL);
         Pattern pattern = Pattern.compile(SYMBOL_REGEX);
